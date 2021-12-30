@@ -15,15 +15,19 @@ rb_out.addEventListener("click", () => {
 btn.onclick = function () {
     let my_obj = {};
     const form_data = Array.from(document.querySelectorAll("#ingresos input[type=text]"));
+
     for (var input of form_data) {
         my_obj[input.id] = input.value;
     }
+
     const radio_button = Array.from(document.querySelectorAll("#ingresos input[type=radio]"));
+
     for (let i = 0; i < radio_button.length; i++) {
         if (radio_button[i].checked) {
             my_obj[radio_button[i].name] = radio_button[i].value;
         }
     }
+
     localStorage["form_hotels"] = JSON.stringify(my_obj);
     console.log(my_obj);
 }
