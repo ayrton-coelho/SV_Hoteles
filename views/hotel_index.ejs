@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
+    <!-- <link rel="stylesheet" href="../index.css"> -->
     <title>Ingresos</title>
 </head>
 <body>
     <div class="main_form">
-        <form action="" method="get" id="ingresos">
+        <form action="http://localhost:3000/hotels" method="post" id="ingresos">
             <div class="check">
                 <input type="radio" name="check" id="check_in" value="check_in">
                 <label for="check_in">Entrada</label>
@@ -18,19 +18,19 @@
             </div>
             <div class="hora">
                 <label for="hora">Hora: </label>
-                <input type="text" id="hora">
+                <input type="text" name="hora">
             </div>
             <div class="fecha">
                 <label for="fecha">Fecha: </label>
-                <input type="text" id="fecha">
+                <input type="text" name="fecha">
             </div>
             <div class="nro_habitacion">
                 <label for="nro_habitacion">N° habitación: </label>
-                <input type="text" id="nro_habitacion">
+                <input type="text" name="nro_habitacion">
             </div>
             <div class="nro_personas">
                 <label for="nro_personas">Cantidad de personas: </label>
-                <input type="text" id="nro_personas">
+                <input type="text" name="nro_personas">
             </div>
             <div class="desde">
                 <h3>Desde:</h3>
@@ -43,11 +43,10 @@
                 <input type="radio" id="no_sabe" name="desde" value="sin_respuesta">
                 <label for="no_sabe">N/S</label>
                 <br>
-                <button type="button" id="enviar">Enviar</button>
+                <button id="enviar">Enviar</button>
             </div>
         </form>
     </div>
-    <script type="text/javascript" src="hotels.js"></script>
-    <script type="text/javascript" src="transport.js"></script>
+    <!-- <script src="./public/js/hotel.js"></script> -->
 </body>
 </html>

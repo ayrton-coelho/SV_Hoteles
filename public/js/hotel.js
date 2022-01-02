@@ -1,5 +1,7 @@
+// enviar button
 const btn = document.querySelector("#enviar");
 
+// radio buttons for check in/out
 const rb_in = document.querySelector("#check_in");
 const rb_out = document.querySelector("#check_out");
 
@@ -27,8 +29,6 @@ btn.onclick = function () {
             my_obj[radio_button[i].name] = radio_button[i].value;
         }
     }
-
-    localStorage["form_hotels"] = JSON.stringify(my_obj);
     console.log(my_obj);
 }
 
