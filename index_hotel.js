@@ -1,15 +1,8 @@
 const express = require('express');
 const app = express();
+const db = require('./database');
 const path = require('path');
-const mysql = require('mysql2');
 const { v4: uuidv4 } = require('uuid');
-
-const con = mysql.createConnection({
-    host: 'localhost',
-    user: 'ayrton',
-    password: 'password',
-    database: 'sv_hoteles'
-});
 
 // set and use express evironment
 app.set('view engine', 'ejs');
@@ -21,26 +14,21 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
+// render hotel form page
 app.get('/hotels', (req, res) => {
     res.render('hotel_index');
 });
 
+// hotel form POST method
 app.post('/hotels', (req, res) => {
     let input = req.body;
     input['id'] = uuidv4();
-    con.connect(function(err) {
-        if (err) throw err;
-        const sql = "INSERT INTO sv_hoteles_input (id, check_, hora, fecha, nro_habitacion, nro_personas, origen)\
+    const sql = "INSERT INTO sv_hoteles_input (id, check_, hora, fecha, nro_habitacion, nro_personas, origen)\
         VALUES (?, ?, ?, ?, ?, ?, ?);";
-        con.query(sql, [input.id, input.check, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.desde], function (err, result) {
-            if (err) throw (err)
+    db.query(sql, [input.id, input.check, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.desde], function (err, result) {
+            if (err) throw err;
         });
-    });
     console.log(input.id);
-});
-
-app.get('/transport', (req, res) => {
-    res.render('transporte_index');
 });
 
 app.listen(3000, 'localhost', () => {
