@@ -31,6 +31,15 @@ app.post('/hotels', (req, res) => {
     console.log(input.id);
 });
 
+// render transport page
+app.get('/transport', (req, res) => {
+    db.promise().execute('SELECT * FROM sv_hoteles_input').then(([rows]) => {
+      res.render('transporte_index', { rows });
+    }).catch(err => {
+      throw err;
+    });
+  });
+
 app.listen(3000, 'localhost', () => {
     console.log("Listening!!!");
 });

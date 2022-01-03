@@ -1,0 +1,57 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    width: 100%;
+}
+
+.title h2 {
+    text-align: center;
+}
+
+table {
+    border: 1px solid blueviolet;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid blueviolet;
+}
+
+.table_content {
+    width: 60%;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.table_content button {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+table {
+    width: 100%;
+    margin: 0 auto;
+}
+
+th {
+    height: 2em;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+tr:hover {
+    background-color: yellow;
+}

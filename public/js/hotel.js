@@ -1,20 +1,27 @@
 // enviar button
-const btn = document.querySelector("#enviar");
+/* const btn = document.querySelector("#enviar"); */
 
 // radio buttons for check in/out
 const rb_in = document.querySelector("#check_in");
 const rb_out = document.querySelector("#check_out");
 
 rb_in.addEventListener("click", () => {
-    document.querySelector("h3").innerHTML = "Desde:";
+    document.querySelector(".puerto h3").innerHTML = "Desde:";
 });
 
 rb_out.addEventListener("click", () => {
-    document.querySelector("h3").innerHTML = "Hacia:";
+    document.querySelector(".puerto h3").innerHTML = "Hacia:";
 });
 
+function submitForm() {
+    const form = document.querySelector("#ingresos");
+    form.submit(); // Submit the form
+    form.reset();  // Reset all form data
+    return true; // Refresh the page
+}
+
 // create object with key/value pairs from form
-btn.onclick = function () {
+/* btn.onclick = function () {
     let my_obj = {};
     const form_data = Array.from(document.querySelectorAll("#ingresos input[type=text]"));
 
@@ -30,32 +37,4 @@ btn.onclick = function () {
         }
     }
     console.log(my_obj);
-}
-
-
-
-// check if a form field is empty
-/* function any(form_data) {
-    for (var input of form_data) {
-        if (input.value == "") {
-            return true;
-        }
-        else {
-            continue;
-        }
-    }
-    return false;
 } */
-
-// enable/disable button based on form fields empty/full
-/* btn.addEventListener("change", stateHandle);
-
-function stateHandle() {
-    if (any(form_data)) {
-        btn.disabled = true;
-    }
-    else {
-        btn.disabled = false;
-    }
-} */
-

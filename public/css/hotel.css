@@ -1,0 +1,14 @@
+body {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+#main_form input[type=text] {
+    width: 100%;
+}
+
+#main_form .check {
+    display: flex;
+    float: right;
+}
