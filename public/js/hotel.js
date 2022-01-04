@@ -24,8 +24,10 @@ function submitForm() {
         return;
     };
 
-    const fecha = document.querySelector('#ingresos input[type=date]');
-    console.log(fecha);
+    // validate fecha
+    if (!TDate()) {
+        return;
+    }
 
     // validate Nro habitacion
     const habitacion = document.querySelector('#ingresos input[name="nro_habitacion"]').value;
@@ -81,4 +83,15 @@ function radioButtons(radio_list) {
         }
     }
     return out;
+}
+
+function TDate() {
+    const UserDate = document.querySelector('input[type=date]').value;
+    const ToDate = new Date();
+
+    if (new Date(UserDate).getTime() <= ToDate.getTime()) {
+          alert("Fecha debe ser mayor o igual a la de hoy");
+          return false;
+    }
+    return true;
 }
