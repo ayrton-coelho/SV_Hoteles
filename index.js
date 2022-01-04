@@ -28,12 +28,13 @@ app.post('/hotels', (req, res) => {
     db.query(sql, [input.id, input.check, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.desde], function (err, result) {
             if (err) throw err;
         });
+    res.redirect('/hotels');
     console.log(input.id);
 });
 
 // render transport page
 app.get('/transport', (req, res) => {
-    db.promise().execute('SELECT * FROM sv_hoteles_input').then(([rows]) => {
+    db.promise().execute('SELECT * FROM sv_hoteles_input ORDER BY fecha ASC').then(([rows]) => {
       res.render('transporte_index', { rows });
     }).catch(err => {
       throw err;

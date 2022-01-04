@@ -24,9 +24,10 @@
             </tr>
             <% if (rows.length) { %>
             <%  rows.forEach(function(data) { %>
+                <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %> 
             <tr>
                 <td> <%= data.check_ %> </td>
-                <td> <%= data.fecha %> </td>
+                <td> <%= fecha %> </td>
                 <td> <%= data.hora %> </td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
