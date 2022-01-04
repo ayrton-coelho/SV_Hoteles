@@ -10,41 +10,35 @@
 <body>
     <div id="main_form">
         <form action="http://localhost:3000/hotels" method="post" id="ingresos">
-            <div class="check">
-                <input type="radio" name="check" id="check_in" value="check_in">
-                <label for="check_in">Entrada</label>
-                <input type="radio" name="check" id="check_out" value="check_out">
-                <label for="check_out">Salida</label>
-            </div>
-            <div class="hora">
+            <fieldset>
+                <div class="checks" id="check">
+                    <input type="radio" name="check" id="check_in" value="check_in">
+                    <label for="check_in">Entrada</label>
+                    <input type="radio" name="check" id="check_out" value="check_out">
+                    <label for="check_out">Salida</label>
+                </div>
                 <label for="hora">Hora: </label>
-                <input type="time" name="hora">
-            </div>
-            <div class="fecha">
+                <input type="time" name="hora"><br>
                 <label for="fecha">Fecha: </label>
-                <input type="date" name="fecha">
-            </div>
-            <div class="nro_habitacion">
+                <input type="date" name="fecha" id="fecha"><br>
                 <label for="nro_habitacion">N° habitación: </label>
-                <input type="text" name="nro_habitacion">
-            </div>
-            <div class="nro_personas">
+                <input type="text" name="nro_habitacion"><br>
                 <label for="nro_personas">Cantidad de personas: </label>
-                <input type="text" name="nro_personas">
-            </div>
-            <div class="puerto">
-                <h3>Desde:</h3>
-                <input type="radio" id="carrasco" name="desde" value="aero_carrasco">
-                <label for="carrasco">Aeropuerto de Carrasco</label>
-                <br>
-                <input type="radio" id="puerto" name="desde" value="puerto_mvd">
-                <label for="puerto">Puerto de Montevideo</label>
-                <br>
-                <input type="radio" id="no_sabe" name="desde" value="sin_respuesta">
-                <label for="no_sabe">N/S</label>
-                <br>
-                <input type="button" value="Enviar" id="enviar" onclick="submitForm()">
-            </div>
+                <input type="text" name="nro_personas"><br>
+                <div class="checks" id="puerto">
+                    <h3>Desde:</h3>
+                    <input type="radio" id="carrasco" name="desde" value="aero_carrasco">
+                    <label for="carrasco">Aeropuerto de Carrasco</label>
+                    <br>
+                    <input type="radio" id="puerto" name="desde" value="puerto_mvd">
+                    <label for="puerto">Puerto de Montevideo</label>
+                    <br>
+                    <input type="radio" id="no_sabe" name="desde" value="sin_respuesta">
+                    <label for="no_sabe">N/S</label>
+                    <br>
+                    <input type="button" value="Enviar" id="enviar" onclick="submitForm()">
+                </div>
+            </fieldset>
         </form>
     </div>
     <script src="../public/js/hotel.js"></script>

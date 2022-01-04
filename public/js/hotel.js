@@ -1,31 +1,56 @@
+// set date input from today on
+const date_field = document.getElementById('fecha');
+const date = new Date();
+let y = date.getFullYear();
+let m = date.getMonth() + 1;
+let d = date.getDate();
+if (d < 10) {
+    d = '0' + d;
+}
+if (m < 10) {
+    m = '0' + m;
+}
+
+const today = y + '-' + m + '-' + d;
+date_field.setAttribute('min', today);
+
 // radio buttons for check in/out
 const rb_in = document.querySelector("#check_in");
 const rb_out = document.querySelector("#check_out");
 
 rb_in.addEventListener("click", () => {
-    document.querySelector(".puerto h3").innerHTML = "Desde:";
+    document.querySelector("#puerto h3").innerHTML = "Desde:";
 });
 rb_out.addEventListener("click", () => {
-    document.querySelector(".puerto h3").innerHTML = "Hacia:";
+    document.querySelector("#puerto h3").innerHTML = "Hacia:";
 });
 
 // form validation and clear after submit success
 function submitForm() {
     // validate check in/out
-    const rb_check = document.querySelectorAll('.check input[type=radio]');
+    const rb_check = document.querySelectorAll('#check input[type=radio]');
     if (!radioButtons(rb_check)) {
         alert('Seleccione Entrada/Salida');
         return;
     };
     // validate puerto origen/destino
-    const rb_puerto = document.querySelectorAll('.puerto input[type=radio]');
+    const rb_puerto = document.querySelectorAll('#puerto input[type=radio]');
     if (!radioButtons(rb_puerto)) {
         alert('Seleccione Origen/Destino');
         return;
     };
 
-    // validate fecha
-    if (!TDate()) {
+    //validate fecha
+    const date_field = document.getElementById('fecha').value;
+    if (!date_field) {
+        alert('Debe elegir una fecha');
+        return;
+    }
+
+    //validate hora
+    const time_field = document.querySelector('input[type=time]').value;
+    if (!time_field) {
+        alert('Seleccione una hora');
         return;
     }
 
@@ -83,15 +108,4 @@ function radioButtons(radio_list) {
         }
     }
     return out;
-}
-
-function TDate() {
-    const UserDate = document.querySelector('input[type=date]').value;
-    const ToDate = new Date();
-
-    if (new Date(UserDate).getTime() <= ToDate.getTime()) {
-          alert("Fecha debe ser mayor o igual a la de hoy");
-          return false;
-    }
-    return true;
 }
