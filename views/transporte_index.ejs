@@ -9,29 +9,55 @@
 </head>
 <body>
     <div class="title">
-        <h2>Viajes</h2>
+        <h2>Arribos</h2>
     </div>
-    <div class="table_content">
+    <div class="table_content_in">
         <button onClick="window.location.reload();">Actualizar Lista</button>
-        <table id="viajes">
+        <table id="viajes_in">
             <tr>
-                <th>Check</th>
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Habitacion</th>
                 <th>Nro. Huespedes</th>
                 <th>Desde</th>
             </tr>
-            <% if (rows.length) { %>
-            <%  rows.forEach(function(data) { %>
+            <% if (arribos.length) { %>
+            <%  arribos.forEach(function(data) { %>
                 <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %> 
             <tr>
-                <td> <%= data.check_ %> </td>
                 <td> <%= fecha %> </td>
                 <td> <%= data.hora %> </td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
-                <td> <%= data.origen %> </td>
+                <td> <%= data.puerto %> </td>
+            </tr>
+            <%  }); %>
+            <% } else { %>
+                <tr>
+                    <td>No hay viajes</td>
+                </tr>
+            <% } %>
+        </table>
+    </div>
+    <div class="table_content_in">
+        <h2>Partidas</h2>
+        <table id="viajes_out">
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Habitacion</th>
+                <th>Nro. Huespedes</th>
+                <th>Desde</th>
+            </tr>
+            <% if (partidas.length) { %>
+            <%  partidas.forEach(function(data) { %>
+                <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %> 
+            <tr>
+                <td> <%= fecha %> </td>
+                <td> <%= data.hora %> </td>
+                <td> <%= data.nro_habitacion %> </td>
+                <td> <%= data.nro_personas %> </td>
+                <td> <%= data.puerto %> </td>
             </tr>
             <%  }); %>
             <% } else { %>

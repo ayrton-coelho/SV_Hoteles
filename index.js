@@ -14,32 +14,53 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 }));
 
+// load DB tables
+let arribos = [];
+db.connect(function(err) {
+  if (err) throw err;
+  db.query('SELECT * FROM sv_hotel_in ORDER BY fecha ASC', function(err, result, fields) {
+    if (err) throw err;
+    arribos = result;
+  });
+});
+
+let partidas = [];
+db.connect(function(err) {
+  if (err) throw err;
+  db.query('SELECT * FROM sv_hotel_out ORDER BY fecha ASC', function(err, result, fields) {
+    if (err) throw err;
+    partidas = result;
+  });
+});
+
 // render hotel form page
 app.get('/hotels', (req, res) => {
-    res.render('hotel_index');
+    res.render('hotel_index', { arribos });
 });
 
 // hotel form POST method
 app.post('/hotels', (req, res) => {
     let input = req.body;
     input['id'] = uuidv4();
-    const sql = "INSERT INTO sv_hoteles_input (id, check_, hora, fecha, nro_habitacion, nro_personas, origen)\
-        VALUES (?, ?, ?, ?, ?, ?, ?);";
-    db.query(sql, [input.id, input.check, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.desde], function (err, result) {
+    let sql = "";
+    if (input.check == 'check_in') {
+      sql = "INSERT INTO sv_hotel_in (id, hora, fecha, nro_habitacion, nro_personas, puerto)\
+        VALUES (?, ?, ?, ?, ?, ?);";
+    } else {
+      sql = "INSERT INTO sv_hotel_out (id, hora, fecha, nro_habitacion, nro_personas, puerto)\
+        VALUES (?, ?, ?, ?, ?, ?);";
+    }
+    db.query(sql, [input.id, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.puerto], function (err, result) {
             if (err) throw err;
-        });
+    });
     res.redirect('/hotels');
     console.log(input.id);
 });
 
 // render transport page
 app.get('/transport', (req, res) => {
-    db.promise().execute('SELECT * FROM sv_hoteles_input ORDER BY fecha ASC').then(([rows]) => {
-      res.render('transporte_index', { rows });
-    }).catch(err => {
-      throw err;
-    });
-  });
+    res.render('transporte_index', { arribos, partidas });
+});
 
 app.listen(3000, 'localhost', () => {
     console.log("Listening!!!");
