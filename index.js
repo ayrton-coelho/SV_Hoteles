@@ -35,7 +35,7 @@ db.connect(function(err) {
 
 // render hotel form page
 app.get('/hotels', (req, res) => {
-    res.render('hotel_index', { arribos });
+    res.render('hotel_index', { arribos, partidas });
 });
 
 // hotel form POST method

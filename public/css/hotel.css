@@ -1,7 +1,5 @@
 body {
     background-color: #fff;
-    display: flex;
-    justify-content: center;
 }
 
 * {
@@ -10,6 +8,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* FOR FORM */
 fieldset {
     padding: 1em 2em;
     border: solid 1px #ccc;
@@ -65,8 +64,49 @@ input[type=button] {
 
 #main_form {
     border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-    width: 50%;
+    padding: 20px 0;
+    width: 100%;
 }
 
+#main_form form {
+    margin: auto;
+    width: 50%;
+    background-color: #f2f2f2;
+}
+
+/* FOR TABLES */
+table {
+    width: 60%;
+    margin: 20px auto;
+    border: 1px solid blueviolet;
+    border-collapse: collapse;
+}
+
+th, td {
+    border-bottom: 1px solid blueviolet;
+}
+
+.table_content {
+    width: 100%;
+    margin: auto;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    overflow-x: auto;
+}
+
+.table_content button {
+    display: block;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+th {
+    height: 2em;
+    background-color: cornflowerblue;
+    color: white;
+}
+
+tr:hover {
+    background-color: yellow;
+}
