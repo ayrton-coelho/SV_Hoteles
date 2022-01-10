@@ -47,8 +47,10 @@
             <tr>
                 <th>Fecha</th>
                 <th>Hora de partida</th>
+                <th>Hora de Pickup</th>
                 <th>Habitacion</th>
                 <th>Nro. Huespedes</th>
+                <th>Nro. de valijas</th>
                 <th>Desde</th>
             </tr>
             <% if (partidas.length) { %>
@@ -57,8 +59,10 @@
             <tr>
                 <td> <%= fecha %> </td>
                 <td> <%= data.hora_de_vuelo %> </td>
+                <td> <%= data.hora_pickup %> </td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
+                <td> <%= data.nro_valijas %> </td>
                 <td> <%= data.puerto %> </td>
             </tr>
             <%  }); %>
