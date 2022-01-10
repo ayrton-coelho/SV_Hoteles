@@ -12,12 +12,12 @@
         <form action="http://localhost:3000/hotels" method="post" id="ingresos">
             <fieldset>
                 <div class="checks" id="check">
-                    <input type="radio" name="check" id="check_in" value="check_in">
-                    <label for="check_in">Entrada</label>
-                    <input type="radio" name="check" id="check_out" value="check_out">
-                    <label for="check_out">Salida</label>
+                    <input type="radio" name="check" id="check_in" value="check_in" onclick="inoutCheck(0)">
+                    <label for="check_in">Arribos</label>
+                    <input type="radio" name="check" id="check_out" value="check_out" onclick="inoutCheck(1)">
+                    <label for="check_out">Partidas</label>
                 </div>
-                <label for="hora">Hora: </label>
+                <label for="hora"><p>Hora: </p></label>
                 <input type="time" name="hora"><br>
                 <label for="fecha">Fecha: </label>
                 <input type="date" name="fecha" id="fecha"><br>
@@ -25,6 +25,8 @@
                 <input type="text" name="nro_habitacion"><br>
                 <label for="nro_personas">Cantidad de personas: </label>
                 <input type="text" name="nro_personas"><br>
+                <label for="nro_valijas" id="valijas_label">Cantidad de valijas: </label>
+                <input type="text" name="nro_valijas" id="valijas_input"><br>
                 <div class="checks" id="puerto">
                     <h3>Desde:</h3>
                     <input type="radio" id="carrasco" name="puerto" value="aero_carrasco">
@@ -46,7 +48,7 @@
         <table id="viajes_in">
             <tr>
                 <th>Fecha</th>
-                <th>Hora</th>
+                <th>Hora de llegada</th>
                 <th>Habitacion</th>
                 <th>Nro. Huespedes</th>
                 <th>Desde</th>
@@ -55,12 +57,11 @@
             <%  arribos.forEach(function(data) { %>
             <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %>
             <tr>
-                <td> <%= data.check_ %> </td>
                 <td> <%= fecha %> </td>
-                <td> <%= data.hora %> </td>
+                <td> <%= data.hora_de_vuelo %> </td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
-                <td> <%= data.origen %> </td>
+                <td> <%= data.puerto %> </td>
             </tr>
             <%  }); %>
             <% } else { %>
@@ -75,7 +76,7 @@
         <table id="viajes_out">
             <tr>
                 <th>Fecha</th>
-                <th>Hora</th>
+                <th>Hora de partida</th>
                 <th>Habitacion</th>
                 <th>Nro. Huespedes</th>
                 <th>Desde</th>
@@ -85,7 +86,7 @@
             <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %>
             <tr>
                 <td> <%= fecha %> </td>
-                <td> <%= data.hora %> </td>
+                <td> <%= data.hora_de_vuelo %> </td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
                 <td> <%= data.puerto %> </td>

@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 let arribos = [];
 db.connect(function(err) {
   if (err) throw err;
-  db.query('SELECT * FROM sv_hotel_in ORDER BY fecha ASC', function(err, result, fields) {
+  db.query('SELECT * FROM sv_hotel_in ORDER BY hora_creacion DESC', function(err, result, fields) {
     if (err) throw err;
     arribos = result;
   });
@@ -27,7 +27,7 @@ db.connect(function(err) {
 let partidas = [];
 db.connect(function(err) {
   if (err) throw err;
-  db.query('SELECT * FROM sv_hotel_out ORDER BY fecha ASC', function(err, result, fields) {
+  db.query('SELECT * FROM sv_hotel_out ORDER BY hora_creacion DESC', function(err, result, fields) {
     if (err) throw err;
     partidas = result;
   });
@@ -42,15 +42,16 @@ app.get('/hotels', (req, res) => {
 app.post('/hotels', (req, res) => {
     let input = req.body;
     input['id'] = uuidv4();
+    const created_at = new Date();
     let sql = "";
     if (input.check == 'check_in') {
-      sql = "INSERT INTO sv_hotel_in (id, hora, fecha, nro_habitacion, nro_personas, puerto)\
-        VALUES (?, ?, ?, ?, ?, ?);";
+      sql = "INSERT INTO sv_hotel_in (id, hora_creacion, hora_de_vuelo, fecha, nro_habitacion, nro_personas, puerto)\
+        VALUES (?, ?, ?, ?, ?, ?, ?);";
     } else {
-      sql = "INSERT INTO sv_hotel_out (id, hora, fecha, nro_habitacion, nro_personas, puerto)\
-        VALUES (?, ?, ?, ?, ?, ?);";
+      sql = "INSERT INTO sv_hotel_out (id, hora_creacion, hora_de_vuelo, fecha, nro_habitacion, nro_personas, puerto)\
+        VALUES (?, ?, ?, ?, ?, ?, ?);";
     }
-    db.query(sql, [input.id, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.puerto], function (err, result) {
+    db.query(sql, [input.id, created_at, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.puerto], function (err, result) {
             if (err) throw err;
     });
     res.redirect('/hotels');

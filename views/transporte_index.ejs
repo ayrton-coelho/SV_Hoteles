@@ -16,7 +16,7 @@
         <table id="viajes_in">
             <tr>
                 <th>Fecha</th>
-                <th>Hora</th>
+                <th>Hora de llegada</th>
                 <th>Habitacion</th>
                 <th>Nro. Huespedes</th>
                 <th>Desde</th>
@@ -26,7 +26,7 @@
                 <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %> 
             <tr>
                 <td> <%= fecha %> </td>
-                <td> <%= data.hora %> </td>
+                <td> <%= data.hora_de_vuelo %> </td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
                 <td> <%= data.puerto %> </td>
@@ -46,17 +46,17 @@
         <table id="viajes_out">
             <tr>
                 <th>Fecha</th>
-                <th>Hora</th>
+                <th>Hora de partida</th>
                 <th>Habitacion</th>
                 <th>Nro. Huespedes</th>
                 <th>Desde</th>
             </tr>
             <% if (partidas.length) { %>
             <%  partidas.forEach(function(data) { %>
-                <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %> 
+                <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %>
             <tr>
                 <td> <%= fecha %> </td>
-                <td> <%= data.hora %> </td>
+                <td> <%= data.hora_de_vuelo %> </td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
                 <td> <%= data.puerto %> </td>

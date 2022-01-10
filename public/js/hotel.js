@@ -17,6 +17,20 @@ date_field.setAttribute('min', today);
 // radio buttons for check in/out
 const rb_in = document.querySelector("#check_in");
 const rb_out = document.querySelector("#check_out");
+// valijas
+const valijas_label = document.querySelector("#valijas_label");
+const valijas_input = document.querySelector("#valijas_input");
+
+function inoutCheck(x) {
+    if (x == 1) {
+        valijas_label.style.display = 'block';
+        valijas_input.style.display = 'block';
+    } else {
+        valijas_label.style.display = 'none';
+        valijas_input.style.display = 'none';
+    }
+    return;
+}
 
 rb_in.addEventListener("click", () => {
     document.querySelector("#puerto h3").innerHTML = "Desde:";
