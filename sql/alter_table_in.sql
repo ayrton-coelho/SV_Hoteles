@@ -1,1 +1,0 @@
-ALTER TABLE sv_hotel_in ADD COLUMN hora_creacion DATETIME AFTER id;
