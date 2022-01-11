@@ -1,0 +1,1 @@
+DESC sv_hotel_out;
