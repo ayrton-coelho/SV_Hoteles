@@ -14,6 +14,7 @@ if (m < 10) {
 const today = y + '-' + m + '-' + d;
 date_field.setAttribute('min', today);
 
+
 // radio buttons for check in/out
 const rb_in = document.querySelector("#check_in");
 const rb_out = document.querySelector("#check_out");
@@ -21,45 +22,37 @@ const rb_out = document.querySelector("#check_out");
 const valijas_label = document.querySelector("#valijas_label");
 const valijas_input = document.querySelector("#valijas_input");
 
+// puerto h3
+const puerto_h3 = document.querySelector("#puerto h3");
+
+// cambiar formulario dependiendo entre Arribo/Partida
 function inoutCheck(x) {
-    if (x == 1) {
+    if (x == 1) { //partida
         valijas_label.style.display = 'block';
         valijas_input.style.display = 'block';
-    } else {
+        puerto_h3.innerHTML = "Hacia:"
+    } else { //arribo
         valijas_label.style.display = 'none';
         valijas_input.style.display = 'none';
+        puerto_h3.innerHTML = "Desde:"
     }
     return;
 }
-
-rb_in.addEventListener("click", () => {
-    document.querySelector("#puerto h3").innerHTML = "Desde:";
-});
-rb_out.addEventListener("click", () => {
-    document.querySelector("#puerto h3").innerHTML = "Hacia:";
-});
 
 // form validation and clear after submit success
 function submitForm() {
     // validate check in/out
     const rb_check = document.querySelectorAll('#check input[type=radio]');
     if (!radioButtons(rb_check)) {
-        alert('Seleccione Entrada/Salida');
+        alert('Seleccione Arribo/Partida');
         return;
     };
     // validate puerto origen/destino
     const rb_puerto = document.querySelectorAll('#puerto input[type=radio]');
     if (!radioButtons(rb_puerto)) {
-        alert('Seleccione Origen/Destino');
+        alert('Seleccione Puerto');
         return;
     };
-
-    //validar vuelo
-    const vuelo = document.querySelector("#vuelo").value;
-    if (!vuelo) {
-        alert('Introduzca vuelo [AEROLINEA] [CODIGO DE VUELO]');
-        return;
-    }
 
     //validate fecha
     const date_field = document.getElementById('fecha').value;

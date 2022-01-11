@@ -42,6 +42,7 @@ app.get('/hotels', (req, res) => {
 app.post('/hotels', (req, res) => {
   // objeto formulario input
   let input = req.body;
+  console.log(input);
   input['hotel'] = "un_hotel";
   // unique id
   input['id'] = uuidv4();
@@ -52,7 +53,7 @@ app.post('/hotels', (req, res) => {
   if (input.check == 'check_in') {
     // ARRIBOS
     sql = "INSERT INTO sv_hotel_in (id, hora_creacion, vuelo, hora_de_vuelo, fecha, nro_habitacion, nro_personas, origen, destino)\
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
     db.query(sql, [input.id, created_at, input.vuelo, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.puerto, input.hotel], function (err, result) {
       if (err) throw err;
     });

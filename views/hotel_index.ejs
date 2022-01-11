@@ -13,19 +13,19 @@
             <fieldset>
                 <div class="checks" id="check">
                     <input type="radio" name="check" id="check_in" value="check_in" onclick="inoutCheck(0)">
-                    <label for="check_in">Arribos</label>
+                    <label for="check_in">Arribo</label>
                     <input type="radio" name="check" id="check_out" value="check_out" onclick="inoutCheck(1)">
-                    <label for="check_out">Partidas</label>
+                    <label for="check_out">Partida</label>
                 </div>
-                <label for="vuelo">Vuelo</label>
-                <input type="text" name="vuelo" id="vuelo">
-                <label for="hora"><p>Hora: </p></label>
+                <label for="vuelo" id="vuelo_label">Vuelo</label>
+                <input type="text" name="vuelo" id="vuelo_input">
+                <label for="hora"><p>*Hora: </p></label>
                 <input type="time" name="hora"><br>
-                <label for="fecha">Fecha: </label>
+                <label for="fecha">*Fecha: </label>
                 <input type="date" name="fecha" id="fecha"><br>
-                <label for="nro_habitacion">N° habitación: </label>
+                <label for="nro_habitacion">*N° habitación: </label>
                 <input type="text" name="nro_habitacion"><br>
-                <label for="nro_personas">Cantidad de personas: </label>
+                <label for="nro_personas">*Cantidad de personas: </label>
                 <input type="text" name="nro_personas"><br>
                 <label for="nro_valijas" id="valijas_label">Cantidad de valijas: </label>
                 <input type="text" name="nro_valijas" id="valijas_input"><br>
@@ -62,7 +62,7 @@
             <%  arribos.forEach(function(data) { %>
             <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %>
             <tr>
-                <td> <%= data.vuelo %></td>
+                <td> <%= data.vuelo %> </td>
                 <td> <%= data.hora_de_vuelo %> </td>
                 <td> <%= fecha %> </td>
                 <td> <%= data.nro_habitacion %> </td>
