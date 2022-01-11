@@ -15,27 +15,31 @@
         <button onClick="window.location.reload();">Actualizar Lista</button>
         <table id="viajes_in">
             <tr>
-                <th>Fecha</th>
+                <th>Vuelo</th>
                 <th>Hora de llegada</th>
+                <th>Fecha</th>
                 <th>Habitacion</th>
                 <th>Nro. Huespedes</th>
-                <th>Desde</th>
+                <th>Origen</th>
+                <th>Destino</th>
             </tr>
             <% if (arribos.length) { %>
             <%  arribos.forEach(function(data) { %>
-                <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %> 
+            <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %>
             <tr>
-                <td> <%= fecha %> </td>
+                <td> <%= data.vuelo %></td>
                 <td> <%= data.hora_de_vuelo %> </td>
+                <td> <%= fecha %> </td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
-                <td> <%= data.puerto %> </td>
+                <td> <%= data.origen %> </td>
+                <td> <%= data.destino %> </td>
             </tr>
             <%  }); %>
             <% } else { %>
-                <tr>
-                    <td>No hay viajes</td>
-                </tr>
+            <tr>
+                <td>No hay viajes</td>
+            </tr>
             <% } %>
         </table>
     </div>
@@ -45,31 +49,35 @@
     <div class="table_content">
         <table id="viajes_out">
             <tr>
+                <th>Vuelo</th>
+                <th>Hora de salida</th>
                 <th>Fecha</th>
-                <th>Hora de partida</th>
-                <th>Hora de Pickup</th>
+                <th>Hora del pickup</th>
                 <th>Habitacion</th>
                 <th>Nro. Huespedes</th>
                 <th>Nro. de valijas</th>
-                <th>Desde</th>
+                <th>Origen</th>
+                <th>Destino</th>
             </tr>
             <% if (partidas.length) { %>
             <%  partidas.forEach(function(data) { %>
-                <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %>
+            <% fecha = (data.fecha.getDate() + '/' + (data.fecha.getMonth() + 1) + '/' + data.fecha.getFullYear()) %>
             <tr>
-                <td> <%= fecha %> </td>
+                <td> <%= data.vuelo %></td>
                 <td> <%= data.hora_de_vuelo %> </td>
-                <td> <%= data.hora_pickup %> </td>
+                <td> <%= fecha %> </td>
+                <td> <%= data.hora_pickup %></td>
                 <td> <%= data.nro_habitacion %> </td>
                 <td> <%= data.nro_personas %> </td>
-                <td> <%= data.nro_valijas %> </td>
-                <td> <%= data.puerto %> </td>
+                <td> <%= data.nro_valijas %></td>
+                <td> <%= data.origen %> </td>
+                <td> <%= data.destino %> </td>
             </tr>
             <%  }); %>
             <% } else { %>
-                <tr>
-                    <td>No hay viajes</td>
-                </tr>
+            <tr>
+                <td>No hay viajes</td>
+            </tr>
             <% } %>
         </table>
     </div>

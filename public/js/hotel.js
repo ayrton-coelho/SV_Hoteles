@@ -54,6 +54,13 @@ function submitForm() {
         return;
     };
 
+    //validar vuelo
+    const vuelo = document.querySelector("#vuelo").value;
+    if (!vuelo) {
+        alert('Introduzca vuelo [AEROLINEA] [CODIGO DE VUELO]');
+        return;
+    }
+
     //validate fecha
     const date_field = document.getElementById('fecha').value;
     if (!date_field) {

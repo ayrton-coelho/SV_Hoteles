@@ -42,6 +42,7 @@ app.get('/hotels', (req, res) => {
 app.post('/hotels', (req, res) => {
   // objeto formulario input
   let input = req.body;
+  input['hotel'] = "un_hotel";
   // unique id
   input['id'] = uuidv4();
   // hora y fecha de creacion
@@ -50,9 +51,9 @@ app.post('/hotels', (req, res) => {
   let sql = "";
   if (input.check == 'check_in') {
     // ARRIBOS
-    sql = "INSERT INTO sv_hotel_in (id, hora_creacion, hora_de_vuelo, fecha, nro_habitacion, nro_personas, puerto)\
-      VALUES (?, ?, ?, ?, ?, ?, ?);";
-    db.query(sql, [input.id, created_at, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.puerto], function (err, result) {
+    sql = "INSERT INTO sv_hotel_in (id, hora_creacion, vuelo, hora_de_vuelo, fecha, nro_habitacion, nro_personas, origen, destino)\
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    db.query(sql, [input.id, created_at, input.vuelo, input.hora, input.fecha, input.nro_habitacion, input.nro_personas, input.puerto, input.hotel], function (err, result) {
       if (err) throw err;
     });
   } else {
@@ -128,9 +129,9 @@ app.post('/hotels', (req, res) => {
       console.log("Pickup: " + pickup);
     }
     // Enviar query con pickup
-    sql = "INSERT INTO sv_hotel_out (id, hora_creacion, hora_de_vuelo, hora_pickup, fecha, nro_habitacion, nro_personas, nro_valijas, puerto)\
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
-    db.query(sql, [input.id, created_at, input.hora, pickup, input.fecha, input.nro_habitacion, input.nro_personas, input.nro_valijas, input.puerto], function (err, result) {
+    sql = "INSERT INTO sv_hotel_out (id, hora_creacion, vuelo, hora_de_vuelo, hora_pickup, fecha, nro_habitacion, nro_personas, nro_valijas, origen, destino)\
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+    db.query(sql, [input.id, created_at, input.vuelo, input.hora, pickup, input.fecha, input.nro_habitacion, input.nro_personas, input.nro_valijas, input.hotel, input.puerto], function (err, result) {
       if (err) throw err;
     });
   }

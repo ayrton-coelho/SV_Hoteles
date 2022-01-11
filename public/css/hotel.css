@@ -80,7 +80,7 @@ input[type=button] {
 
 /* FOR TABLES */
 table {
-    width: 60%;
+    width: 100%;
     margin: 20px auto;
     border: 1px solid blueviolet;
     border-collapse: collapse;
